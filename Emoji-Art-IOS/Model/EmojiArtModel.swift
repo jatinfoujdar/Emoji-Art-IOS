@@ -8,7 +8,7 @@
 import Foundation
 
 struct EmojiArtModel{
-    var backgound: URL?
+    var background: URL? = nil
     var emojis = [Emoji]()
     
     struct Emoji{
