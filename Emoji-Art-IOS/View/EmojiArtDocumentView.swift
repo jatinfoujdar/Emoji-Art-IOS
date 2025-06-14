@@ -5,4 +5,23 @@
 //  Created by jatin foujdar on 14/06/25.
 //
 
-import Foundation
+import SwiftUI
+
+
+struct EmojiArtDocumentView: View {
+    private let emojis = "👻🍎😃🤪☹️🤯🐶🐭🦁🐵🦆🐝🐢🐄🐖🌲🌴🌵🍄🌞🌎🔥🌈🌧️🌨️☁️⛄️⛳️🚗🚙🚓🚲🛺🏍️🚘✈️🛩️🚀🚁🏰🏠❤️💤⛵️" 
+    var body: some View{
+        VStack{
+            Color.yellow
+            ScrollingEmojis(emojis: <#[String]#>)
+        }
+    }
+}
+
+
+
+
+
+#Preview{
+    EmojiArtDocumentView()
+}
