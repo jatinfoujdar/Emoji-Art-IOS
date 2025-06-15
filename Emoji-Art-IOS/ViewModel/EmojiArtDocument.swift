@@ -26,5 +26,7 @@ class EmojiArtDocument: ObservableObject{
     }
     
     
-    
+    func addEmoji(_ emoji: String, at position: Emoji.Position, size: CGFloat){
+        emojisArt.addEmoji(emoji, at: position, size: Int(size))
+    }
 }
