@@ -11,7 +11,7 @@ import SwiftUI
 struct ScrollingEmojis: View{
     let emojis: [String]
     
-    init(emojis: String) {
+    init(_ emojis: String) {
         self.emojis = emojis.uniqued.map(String.init)
     }
 
