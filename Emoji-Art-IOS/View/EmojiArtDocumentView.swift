@@ -9,6 +9,7 @@ import SwiftUI
 
 
 struct EmojiArtDocumentView: View {
+    typealias Emoji = EmojiArtModel.Emoji
     private let PaletteEmojiSize: CGFloat = 40
     @ObservedObject  var document : EmojiArtDocument
     
@@ -16,7 +17,7 @@ struct EmojiArtDocumentView: View {
     var body: some View{
         VStack(spacing: 0){
             documentBody
-            Color.yellow
+//            Color.yellow
             ScrollingEmojis(emojis)
                 .font(.system(size: PaletteEmojiSize))
                 .padding(.horizontal)
@@ -30,7 +31,8 @@ struct EmojiArtDocumentView: View {
             
             ZStack{
                 Color.white
-                
+                AsyncImage(url: document.background)
+                    .position(Emoji.Position(x:0,y:0).in(geometry))
                 ForEach(document.emojis){emoji in
                     Text(emoji.string)
                         .font(.system(size: CGFloat(emoji.size)))
