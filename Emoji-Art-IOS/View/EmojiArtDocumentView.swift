@@ -25,13 +25,17 @@ struct EmojiArtDocumentView: View {
     }
     
     private var documentBody: some View{
-        ZStack{
-            Color.white
+        GeometryReader{ geometry in
             
-            ForEach(document.emojis){emoji in
-                Text(emoji.string)
-                    .font(.system(size: CGFloat(emoji.size)))
-                    .position(CGPoint(x: emoji.position.x, y: emoji.position.y))
+            
+            ZStack{
+                Color.white
+                
+                ForEach(document.emojis){emoji in
+                    Text(emoji.string)
+                        .font(.system(size: CGFloat(emoji.size)))
+                        .position(emoji.position.in(geometry))
+                }
             }
         }
     }
