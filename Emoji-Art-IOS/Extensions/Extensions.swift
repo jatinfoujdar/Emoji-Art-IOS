@@ -22,6 +22,8 @@ struct ScrollingEmojis: View{
             HStack{
                 ForEach(emojis, id: \.self){emoji in
                     Text(emoji)
+                        .draggable(emoji)
+                    
                 }
             }
         }
