@@ -12,7 +12,7 @@ import SwiftUI
 class EmojiArtDocument: ObservableObject{
     typealias Emoji = EmojiArtModel.Emoji
     
-    private var emojisArt = EmojiArtModel()
+    @Published private var emojisArt = EmojiArtModel()
     
     init(){
         emojisArt.addEmoji("😀", at: .init(x: -200, y: -150), size: 200)
