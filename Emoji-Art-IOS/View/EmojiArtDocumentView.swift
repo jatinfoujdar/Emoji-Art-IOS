@@ -27,16 +27,34 @@ struct EmojiArtDocumentView: View {
     
     private var documentBody: some View{
         GeometryReader{ geometry in
-            documentContent(in: geometry)
-            
             ZStack{
                 Color.white
+                documentContent(in: geometry)
+                    .scaleEffect(zoom * gestureZoom)
+                    .offset(pan)
                 
             }
+            .gesture(zoomGesture)
             .dropDestination(for: Sturldata.self){sturldata, location in
                 return drop(sturldata, at: location, in: geometry)
             }
+      
         }
+    }
+    
+    @State private var zoom: CGFloat = 1
+    @State private var pan : CGOffset = .zero
+    @GestureState private var gestureZoom : CGFloat = 1
+    
+    
+    private var zoomGesture: some Gesture {
+        MagnificationGesture()
+            .updating($gestureZoom){inMotionPinchScale, gestureZoom, _ in
+                gestureZoom = inMotionPinchScale
+            }
+            .onEnded{ endingPinchScale in
+            zoom *= endingPinchScale
+            }
     }
     
     @ViewBuilder

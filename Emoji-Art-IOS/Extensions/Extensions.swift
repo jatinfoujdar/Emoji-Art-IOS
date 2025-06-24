@@ -7,6 +7,7 @@
 import Foundation
 import SwiftUI
 
+typealias CGOffset = CGSize
 
 struct ScrollingEmojis: View{
     let emojis: [String]
