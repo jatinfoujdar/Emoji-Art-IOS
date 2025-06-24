@@ -27,23 +27,30 @@ struct EmojiArtDocumentView: View {
     
     private var documentBody: some View{
         GeometryReader{ geometry in
-            
+            documentContent(in: geometry)
             
             ZStack{
                 Color.white
-                AsyncImage(url: document.background)
-                    .position(Emoji.Position(x:0,y:0).in(geometry))
-                ForEach(document.emojis){emoji in
-                    Text(emoji.string)
-                        .font(.system(size: CGFloat(emoji.size)))
-                        .position(emoji.position.in(geometry))
-                }
+                
             }
             .dropDestination(for: Sturldata.self){sturldata, location in
                 return drop(sturldata, at: location, in: geometry)
             }
         }
     }
+    
+    @ViewBuilder
+    private func documentContent(in geometry: GeometryProxy)-> some View{
+        
+        AsyncImage(url: document.background)
+            .position(Emoji.Position(x:0,y:0).in(geometry))
+        ForEach(document.emojis){emoji in
+            Text(emoji.string)
+                .font(.system(size: CGFloat(emoji.size)))
+                .position(emoji.position.in(geometry))
+        }
+    }
+    
     private func drop(_ sturldatas: [Sturldata], at location: CGPoint, in geometry: GeometryProxy) -> Bool {
 
         for url in sturldatas {
