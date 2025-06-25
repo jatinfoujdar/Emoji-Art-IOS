@@ -14,11 +14,11 @@ class EmojiArtDocument: ObservableObject{
     
     @Published private var emojisArt = EmojiArtModel()
     
-    init(){
-        emojisArt.addEmoji("😀", at: .init(x: -200, y: -150), size: 200)
-        emojisArt.addEmoji("🐶", at: .init(x: 250, y: 100), size: 200)
-
-    }
+//    init(){
+//        emojisArt.addEmoji("😀", at: .init(x: -200, y: -150), size: 200)
+//        emojisArt.addEmoji("🐶", at: .init(x: 250, y: 100), size: 200)
+//
+//    }
     
     
     var emojis: [Emoji]{
